@@ -1,46 +1,50 @@
-﻿using BusinessLayer.Abstract;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace BusinessLayer.Concrete
+namespace Business.Concrete
 {
+
     public class AboutManager : IAboutService
     {
-        IAboutDal _aboutDal;
+        private IAboutDal _aboutDal;
 
         public AboutManager(IAboutDal aboutDal)
         {
             _aboutDal = aboutDal;
         }
 
-        public void AboutAdd(About about)
+        public List<About> GetAll()
         {
-            throw new NotImplementedException();
-        }
-
-        public void AboutDelete(About about)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AboutUpdate(About about)
-        {
-            throw new NotImplementedException();
+            return _aboutDal.List();
         }
 
         public About GetById(int id)
         {
-            throw new NotImplementedException();
+            return _aboutDal.Get(x => x.AboutId == id);
         }
 
-        public List<About> GetList()
+        public void Add(About about)
         {
-            throw new NotImplementedException();
+            _aboutDal.Insert(about);
+        }
+
+        public void Update(About about)
+        {
+            _aboutDal.Update(about);
+        }
+
+        public void Delete(About about)
+        {
+            _aboutDal.Delete(about);
+        }
+
+        public List<About> GetAll(Expression<Func<About, bool>> filter)
+        {
+            return _aboutDal.List(filter);
         }
     }
 }
