@@ -56,6 +56,7 @@
     <Compile Include="Abstract\IContactDal.cs" />
     <Compile Include="Abstract\IContentDal.cs" />
     <Compile Include="Abstract\IHeadingDal.cs" />
+    <Compile Include="Abstract\IImageFileDal.cs" />
     <Compile Include="Abstract\IMessageDal.cs" />
     <Compile Include="Abstract\IRepository.cs" />
     <Compile Include="Abstract\IWriterDal.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="EntityFramework\EfContactDal.cs" />
     <Compile Include="EntityFramework\EfContentDal.cs" />
     <Compile Include="EntityFramework\EfHeadingDal.cs" />
+    <Compile Include="EntityFramework\EfImageFileDal.cs" />
     <Compile Include="EntityFramework\EfMessageDal.cs" />
     <Compile Include="EntityFramework\EfWriterDal.cs" />
     <Compile Include="Migrations\202502061032047_mig1.cs" />
@@ -99,6 +101,14 @@
     <Compile Include="Migrations\202502241408080_mig_add_message_class.cs" />
     <Compile Include="Migrations\202502241408080_mig_add_message_class.Designer.cs">
       <DependentUpon>202502241408080_mig_add_message_class.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202502281118025_mig_contact_date.cs" />
+    <Compile Include="Migrations\202502281118025_mig_contact_date.Designer.cs">
+      <DependentUpon>202502281118025_mig_contact_date.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202502281244452_mig_image_file.cs" />
+    <Compile Include="Migrations\202502281244452_mig_image_file.Designer.cs">
+      <DependentUpon>202502281244452_mig_image_file.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -137,6 +147,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202502241408080_mig_add_message_class.resx">
       <DependentUpon>202502241408080_mig_add_message_class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202502281118025_mig_contact_date.resx">
+      <DependentUpon>202502281118025_mig_contact_date.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202502281244452_mig_image_file.resx">
+      <DependentUpon>202502281244452_mig_image_file.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

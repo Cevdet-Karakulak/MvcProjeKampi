@@ -14,6 +14,6 @@ namespace BusinessLayer.Abstract
         void MessageAdd(Message message);
         void MessageDelete(Message message);
         void MessageUpdate(Message message);
-        Writer GetById(int id);
+        Message GetById(int id);
     }
 }

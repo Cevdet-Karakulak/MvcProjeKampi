@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete.Repositories;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 
 namespace MvcProjeKampi.Controllers
 {
@@ -16,6 +17,7 @@ namespace MvcProjeKampi.Controllers
     {
         // GET: Message
         MessageManager mm = new MessageManager(new EfMessageDal());
+        MessageValidiator messagevalidator = new MessageValidiator();
 
 
         public ActionResult Inbox()
@@ -28,6 +30,16 @@ namespace MvcProjeKampi.Controllers
             var messageList = mm.GetListSendbox();
             return View(messageList);
         }
+        public ActionResult GetInboxMessageDetails(int id)
+        {
+            var values = mm.GetById(id);
+            return View(values);
+        }
+        public ActionResult GetSendboxMessageDetails(int id)
+        {
+            var values = mm.GetById(id);
+            return View(values);
+        }
         [HttpGet]
         public ActionResult NewMessage()
         {
@@ -36,8 +48,22 @@ namespace MvcProjeKampi.Controllers
         [HttpPost]
         public ActionResult NewMessage(Message p)
         {
-
+            ValidationResult results = messagevalidator.Validate(p);
+            if (results.IsValid)
+            {
+                p.MessageDate=DateTime.Parse(DateTime.Now.ToShortDateString());
+                mm.MessageAdd(p);
+                return RedirectToAction("Sendbox");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
             return View();
+
         }
     }
 }
