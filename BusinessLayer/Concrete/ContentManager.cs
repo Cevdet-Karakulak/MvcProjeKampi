@@ -13,11 +13,6 @@ namespace BusinessLayer.Concrete
     public class ContentManager : IContentService
     {
         IContentDal _contentDal;
-
-        public ContentManager(EfContentDal efContentDal)
-        {
-        }
-
         public ContentManager(IContentDal contentDal)
         {
             _contentDal = contentDal;
@@ -49,6 +44,11 @@ namespace BusinessLayer.Concrete
         public List<Content> GetListByHeadingID(int id)
         {
             return _contentDal.List(x => x.HeadingId == id);
+        }
+
+        public List<Content> GetListByWriter(int id)
+        {
+            return _contentDal.List(x => x.WriterID == id);
         }
     }
 }
