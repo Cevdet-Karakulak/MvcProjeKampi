@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace MvcProjeKampi.Controllers
 {
@@ -16,7 +18,7 @@ namespace MvcProjeKampi.Controllers
         HeadingManager hm = new HeadingManager(new EfHeadingDal());
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
         Context c = new Context();
-        int id;
+      
         public ActionResult WriterProfile()
         {
             return View();
@@ -82,6 +84,11 @@ namespace MvcProjeKampi.Controllers
             headingValue.HeadingStatus = false;
             hm.HeadingDelete(headingValue);
             return RedirectToAction("MyHeading");
+        }
+        public ActionResult AllHeading(int p=1)
+        {
+            var headings=hm.GetList().ToPagedList(p,4);
+            return View(headings);
         }
     }
 }

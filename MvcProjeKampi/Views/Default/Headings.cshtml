@@ -61,7 +61,7 @@ to get the desired effect
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         @foreach (var item in Model) {
                         <li class="nav-item">
-                            <a href="/WriterPanel/MyHeading/" class="nav-link">
+                            <a href="/Default/Headings/@item.HeadingId" class="nav-link">
                                 <p>
                                     @item.HeadingName 
                                 </p>
