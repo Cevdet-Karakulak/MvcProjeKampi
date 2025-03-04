@@ -15,6 +15,7 @@ namespace MvcProjeKampi.Controllers
     [AllowAnonymous]
     public class LoginController : Controller
     {
+        WriterLoginManager wm = new WriterLoginManager(new EfWriterDal());
         // GET: Admin
         [HttpGet]
         public ActionResult Index()
@@ -46,8 +47,9 @@ namespace MvcProjeKampi.Controllers
         [HttpPost]
         public ActionResult WriterLogin(Writer p)
         {
-            Context context = new Context();
-            var writerUserinfo = context.Writers.FirstOrDefault(x => x.WriterMail == p.WriterMail && x.WriterPassword == p.WriterPassword);
+            //Context context = new Context();
+            //var writerUserinfo = context.Writers.FirstOrDefault(x => x.WriterMail == p.WriterMail && x.WriterPassword == p.WriterPassword);
+            var writerUserinfo=wm.GetWriter(p.WriterMail,p.WriterPassword);
             if (writerUserinfo != null)
             {
                 FormsAuthentication.SetAuthCookie(writerUserinfo.WriterMail, false);

@@ -10,7 +10,7 @@ namespace Business.Concrete
 
     public class AboutManager : IAboutService
     {
-        private IAboutDal _aboutDal;
+         IAboutDal _aboutDal;
 
         public AboutManager(IAboutDal aboutDal)
         {
