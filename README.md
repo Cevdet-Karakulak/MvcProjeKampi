@@ -1,4 +1,4 @@
-## Murat Yücedağ ile MVC Proje Kampını Tamamladım!!!
+## 🎓 Murat Yücedağ ile MVC Proje Kampını Tamamladım!!!
 
 Murat Yücedağ'ın YouTube'da sunduğu 100 dersten oluşan MVC Proje Kampı'nı başarıyla tamamladım. Bu süreçte .NET MVC kullanarak bir proje geliştirdim ve projede MSSQL veri tabanını tercih ettim. Ayrıca, SOLID prensiplerine uygun şekilde, N Katmanlı Mimari yapısını (N-Tier Architecture) kullandım.
 
